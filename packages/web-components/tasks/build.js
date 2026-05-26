@@ -26,6 +26,22 @@ const cjsOutputDir = path.join(componentDir, 'lib');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Sass load paths for hoisted (pnpm) node_modules layouts
+ *
+ * @param {string} packageDir directory of the component being built
+ */
+function getScssIncludePaths(packageDir) {
+  const candidates = [
+    path.resolve(packageDir, 'node_modules'),
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../../node_modules'),
+    path.resolve(__dirname, '../../../primitives'),
+  ];
+
+  return candidates.filter((candidate) => existsSync(candidate));
+}
+
 const packageJson = JSON.parse(
   readFileSync(path.resolve(__dirname, '../package.json'), 'utf8')
 );
@@ -38,6 +54,11 @@ const componentPackageJson = JSON.parse(
  * Find tsconfig.json by walking up the directory tree
  */
 function findTsConfig() {
+  const localTsConfig = path.join(componentDir, 'tsconfig.json');
+  if (existsSync(localTsConfig)) {
+    return localTsConfig;
+  }
+
   let currentDir = componentDir;
   const root = path.parse(currentDir).root;
 
@@ -126,10 +147,7 @@ function getRollupConfig(outDir) {
         },
       }),
       litSCSS({
-        includePaths: [
-          path.resolve(__dirname, '../node_modules'),
-          path.resolve(__dirname, '../../../node_modules'),
-        ],
+        includePaths: getScssIncludePaths(componentDir),
         async preprocessor(contents, id) {
           return (
             await postcss([autoprefixer(), cssnano()]).process(contents, {

@@ -1,2 +1,2 @@
-yarn lint-staged --no-stash
-yarn dedupe
+pnpm lint-staged --no-stash
+pnpm dedupe

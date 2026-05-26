@@ -1,0 +1,24 @@
+packages:
+  - 'packages/*'
+  - 'packages/*/**'
+  - 'tools/*'
+
+nodeLinker: hoisted
+autoInstallPeers: true
+dangerouslyAllowAllBuilds: true
+publicHoistPattern:
+  - '@carbon-labs/*'
+
+allowBuilds:
+  esbuild: true
+  '@parcel/watcher': true
+  nx: true
+
+overrides:
+  '@carbon/react': ^1.95.0
+  '@carbon/styles': ^1.94.0
+  '@carbon/icons-react': ^11.65.0
+  '@types/react': ^18.3.28
+  '@types/react-dom': ^18.3.7
+  react: ^18.3.1
+  react-dom: ^18.3.1

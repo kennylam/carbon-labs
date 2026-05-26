@@ -8,9 +8,7 @@
 import { LitElement, html } from 'lit';
 import { property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-// Temporal API is available globally via polyfill
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-declare const Temporal: typeof import('@js-temporal/polyfill').Temporal;
+import { Temporal } from '@js-temporal/polyfill';
 import { prefix } from '../../temp-imports/globals/settings';
 import { carbonElement as customElement } from '../../temp-imports/globals/decorators/carbon-element';
 import ChevronLeft16 from '@carbon/icons/es/chevron--left/16.js';

@@ -16,7 +16,7 @@ import type {
   StateTransition,
   DateSelectPayload,
 } from '@carbon-labs/primitives/date-picker';
-import type CDSDatePicker from '../components/date-picker';
+import type CDSDatePicker from '../components/date-picker/date-picker.js';
 
 /**
  * Adapter configuration

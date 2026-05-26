@@ -7,6 +7,7 @@
 
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import { Temporal } from '@js-temporal/polyfill';
 import { prefix } from '../../temp-imports/globals/settings';
 import FormMixin from '../../temp-imports/globals/mixins/form';
 import HostListenerMixin from '../../temp-imports/globals/mixins/host-listener';
@@ -56,7 +57,6 @@ enum DATE_PICKER_MODE {
  * @fires cds-date-picker-changed - The custom event fired when the date selection changes.
  * @fires cds-date-picker-error - The custom event fired when an error occurs.
  */
-// @ts-expect-error - Mixin inheritance not fully recognized by TypeScript
 @customElement(`${prefix}-date-picker`)
 class CDSDatePicker extends HostListenerMixin(FormMixin(LitElement)) {
   /**
@@ -89,11 +89,9 @@ class CDSDatePicker extends HostListenerMixin(FormMixin(LitElement)) {
    */
   private get _mode() {
     const { selectorInputTo } = this.constructor as typeof CDSDatePicker;
-    // @ts-expect-error - querySelector from mixin
     if (this.querySelector(selectorInputTo)) {
       return DATE_PICKER_MODE.RANGE;
     }
-    // @ts-expect-error - querySelector from mixin
     if (this.querySelector(`${prefix}-date-picker-input[kind="single"]`)) {
       return DATE_PICKER_MODE.SINGLE;
     }
@@ -210,7 +208,6 @@ class CDSDatePicker extends HostListenerMixin(FormMixin(LitElement)) {
             (this.constructor as typeof CDSDatePicker).selectorInputFrom
           )
       );
-    // @ts-expect-error - Type comparison between mixin types
     if (oldDateInteractNode !== dateInteractNode) {
       this._dateInteractNode =
         dateInteractNode as unknown as CDSDatePickerInput;
@@ -292,11 +289,9 @@ class CDSDatePicker extends HostListenerMixin(FormMixin(LitElement)) {
       if (this._mode === DATE_PICKER_MODE.RANGE) {
         const { selectorInputFrom, selectorInputTo } = this
           .constructor as typeof CDSDatePicker;
-        // @ts-expect-error - querySelector is available from HTMLElement
         const inputFrom = this.querySelector(
           selectorInputFrom
         ) as CDSDatePickerInput;
-        // @ts-expect-error - querySelector is available from HTMLElement
         const inputTo = this.querySelector(
           selectorInputTo
         ) as CDSDatePickerInput;
@@ -579,7 +574,6 @@ class CDSDatePicker extends HostListenerMixin(FormMixin(LitElement)) {
     const { _value: oldValue } = this;
     this._value = value;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error - requestUpdate is available from LitElement
     this.requestUpdate('value', oldValue);
   }
 

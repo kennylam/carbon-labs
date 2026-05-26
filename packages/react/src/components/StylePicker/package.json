@@ -37,7 +37,9 @@
   },
   "devDependencies": {
     "@carbon-labs/utilities": "0.28.0",
-    "@lit/react": "^1.0.1"
+    "@lit/react": "^1.0.1",
+    "@types/react": "^18.3.28",
+    "react": "^18.3.1"
   },
   "dependencies": {
     "@carbon-labs/wc-style-picker": "workspace:^",

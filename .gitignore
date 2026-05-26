@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .yarn/install-state.gz
+.pnpm-debug.log*
 launch.json
 tasks.json
 settings.json
@@ -40,3 +41,8 @@ agentic.stories.js
 *storybook.log
 test-coverage/
 **/codecept/screenshots
+
+# Yarn files
+.yarn/
+.yarnrc.yml
+yarn.lock

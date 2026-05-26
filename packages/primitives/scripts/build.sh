@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clean previous build
-yarn clean
+pnpm clean
 
 # Compile TypeScript
 tsc

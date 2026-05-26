@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clean previous build
-yarn clean
+pnpm clean
 
 # Transpile JavaScript with Babel
 babel src --quiet -d es
