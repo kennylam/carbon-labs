@@ -195,14 +195,14 @@ export async function newCommand(componentName, options) {
   }
 
   await runStep(
-    'yarn install',
-    () => execa('yarn', ['install'], { cwd: localPath, stdio: 'inherit' }),
+    'pnpm install',
+    () => execa('pnpm', ['install'], { cwd: localPath, stdio: 'inherit' }),
     { dryRun: isDryRun }
   );
 
   await runStep(
-    'yarn build',
-    () => execa('yarn', ['build'], { cwd: localPath, stdio: 'inherit' }),
+    'pnpm build',
+    () => execa('pnpm', ['build'], { cwd: localPath, stdio: 'inherit' }),
     { dryRun: isDryRun }
   );
 
@@ -212,9 +212,9 @@ export async function newCommand(componentName, options) {
   log.info(`Component: ${casedName}  (type: ${componentType})`);
 
   await runStep(
-    `yarn generate ${casedName} in ${PACKAGE_DIR[componentType]}`,
+    `pnpm generate ${casedName} in ${PACKAGE_DIR[componentType]}`,
     () =>
-      execa('yarn', ['generate', casedName], {
+      execa('pnpm', ['generate', casedName], {
         cwd: packageDir,
         stdio: 'inherit',
       }),
@@ -244,8 +244,8 @@ export async function newCommand(componentName, options) {
   }
 
   await runStep(
-    'yarn scaffold',
-    () => execa('yarn', scaffoldArgs, { cwd: localPath, stdio: 'inherit' }),
+    'pnpm scaffold',
+    () => execa('pnpm', scaffoldArgs, { cwd: localPath, stdio: 'inherit' }),
     { dryRun: isDryRun }
   );
 
@@ -270,7 +270,7 @@ export async function newCommand(componentName, options) {
 
   if (options.storybook !== false && !isDryRun) {
     try {
-      const storybookProc = execa('yarn', ['storybook'], {
+      const storybookProc = execa('pnpm', ['storybook'], {
         cwd: packageDir,
         stdio: 'ignore',
         detached: true,
@@ -279,11 +279,11 @@ export async function newCommand(componentName, options) {
       log.info('Storybook starting in background...');
     } catch {
       log.warn(
-        'Failed to start Storybook automatically. Run `yarn storybook` manually.'
+        'Failed to start Storybook automatically. Run `pnpm storybook` manually.'
       );
     }
   } else if (options.storybook !== false && isDryRun) {
-    log.info('[dry-run] Would spawn: yarn storybook');
+    log.info('[dry-run] Would spawn: pnpm storybook');
   }
 
   log.blank();
@@ -292,7 +292,7 @@ export async function newCommand(componentName, options) {
   console.log('  Component folder : ' + componentPath);
   console.log('  Storybook path   : ' + packageRelativeDir);
   console.log(
-    '  Storybook command: cd ' + packageRelativeDir + ' && yarn storybook'
+    '  Storybook command: cd ' + packageRelativeDir + ' && pnpm storybook'
   );
   if (options.withGit) {
     console.log('  Branch           : ' + branchName);
@@ -310,7 +310,7 @@ export async function newCommand(componentName, options) {
       '    2. Iterate on your component.\n' +
       '    3. Preview in Storybook with: cd ' +
       packageRelativeDir +
-      ' && yarn storybook\n' +
+      ' && pnpm storybook\n' +
       (options.withGit
         ? '    4. Push: git push -u origin ' + branchName + '\n'
         : '    4. Commit and push from your current branch.\n')

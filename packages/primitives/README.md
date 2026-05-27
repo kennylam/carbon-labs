@@ -13,7 +13,7 @@ includes state machines, utilities, and other reusable primitives.
 ```bash
 npm install @carbon-labs/primitives
 # or
-yarn add @carbon-labs/primitives
+pnpm add @carbon-labs/primitives
 ```
 
 ## Primitives
@@ -94,13 +94,13 @@ function useDatePicker(config) {
 ### Building
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ### Testing
 
 ```bash
-yarn test
+pnpm test
 ```
 
 ## Contributing

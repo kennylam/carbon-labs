@@ -68,7 +68,7 @@ npx @carbon-labs/create@latest <component-name>
 ```
 
 The command runs the repo install/build/generate flow and then runs
-`yarn scaffold` to add Carbon Labs contribution metadata, Storybook tags, and
+`pnpm scaffold` to add Carbon Labs contribution metadata, Storybook tags, and
 copyright headers to generated source files. Git operations are opt-in:
 
 ```bash
@@ -78,7 +78,7 @@ npx @carbon-labs/create@latest <component-name> --with-git
 When the component is ready for PR review, run the repo prep command:
 
 ```bash
-yarn prep
+pnpm prep
 ```
 
 The prep command formats the repo, dedupes dependencies, validates license

@@ -23,7 +23,7 @@ describe('isSourceFile', () => {
   it('skips non-source files', () => {
     expect(isSourceFile('README.md')).toBe(false);
     expect(isSourceFile('package.json')).toBe(false);
-    expect(isSourceFile('yarn.lock')).toBe(false);
+    expect(isSourceFile('pnpm-lock.yaml')).toBe(false);
   });
 });
 

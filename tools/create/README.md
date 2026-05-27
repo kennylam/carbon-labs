@@ -18,10 +18,10 @@ run any Git commands.
 The create flow:
 
 1. Validates the component name
-2. Runs `yarn install`
-3. Runs `yarn build`
-4. Runs `yarn generate <name>` in the correct package
-5. Runs `yarn scaffold` to inject owners, Storybook tags, the problem-statement
+2. Runs `pnpm install`
+3. Runs `pnpm build`
+4. Runs `pnpm generate <name>` in the correct package
+5. Runs `pnpm scaffold` to inject owners, Storybook tags, the problem-statement
    scaffold, and copyright headers
 6. Opens the component folder in your editor
 7. Starts Storybook in the background
@@ -38,7 +38,7 @@ npx @carbon-labs/create@latest <component-name> --with-git
 - Node 20+
 - [GitHub CLI (`gh`)](https://cli.github.com) — authenticated via
   `gh auth login` when using `--with-git`
-- `yarn` available in your shell
+- `pnpm` available in your shell (via Corepack)
 
 ## Running from Carbon Labs
 
@@ -47,18 +47,18 @@ npx @carbon-labs/create@latest <component-name> --with-git
 npx @carbon-labs/create@latest my-component
 
 # Or run the binary directly from the tool workspace:
-yarn workspace @carbon-labs/create create-carbon-labs my-component
+pnpm --filter @carbon-labs/create create-carbon-labs my-component
 ```
 
 When your component is ready for PR review, run one repo-local prep command from
 the root of your Carbon Labs checkout:
 
 ```bash
-yarn prep
+pnpm prep
 ```
 
-`yarn prep` ensures added source files have the IBM copyright header, runs
-`yarn format`, runs `yarn dedupe`, and validates license headers.
+`pnpm prep` ensures added source files have the IBM copyright header, runs
+`pnpm format`, runs `pnpm dedupe`, and validates license headers.
 
 ## Usage
 
@@ -131,9 +131,9 @@ defaults.
 
 ```bash
 cd tools/create
-yarn install
-yarn test           # vitest run
-yarn test:watch     # vitest watch mode
+pnpm install
+pnpm test           # vitest run
+pnpm test:watch     # vitest watch mode
 ```
 
 ## Roadmap
@@ -144,11 +144,11 @@ yarn test:watch     # vitest watch mode
 | 2 — Squad namespace         | Dropped | Replaced by Storybook `tags` (see step 9 above)       |
 | 3 — MDX auto-fill           | ✅ Done | Maintainer block + problem-statement scaffold         |
 | 4 — Issue template + Action | Planned | Zero-click path for designers and PMs                 |
-| 5 — `yarn graduate`         | Stretch | Promote component to Labs proper and open upstream PR |
+| 5 — `pnpm graduate`         | Stretch | Promote component to Labs proper and open upstream PR |
 
 ## Notes
 
-- **Does not replace `yarn generate`** — wraps it. If the upstream generator
+- **Does not replace `pnpm generate`** — wraps it. If the upstream generator
   changes, `@carbon-labs/create` inherits the change automatically.
 - The `storybook-publish` workflow in carbon-labs only runs on pushes to `main`
   (GitHub Pages). There is no per-PR preview — a draft PR link is the best we

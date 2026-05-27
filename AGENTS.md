@@ -45,10 +45,10 @@ The create utility:
 
 - validates the component name
 - optionally handles fork/clone/update/branch/commit when `--with-git` is passed
-- runs `yarn install`
-- runs `yarn build` so the repo is in a known good state before generation
-- runs `yarn generate <name>` in the correct package
-- runs `yarn scaffold`
+- runs `pnpm install`
+- runs `pnpm build` so the repo is in a known good state before generation
+- runs `pnpm generate <name>` in the correct package
+- runs `pnpm scaffold`
 - opens the generated component folder
 - starts Storybook in the background
 
@@ -59,9 +59,9 @@ Do not run extra build or prep commands immediately after the create utility
 finishes. The next step is local component development and Storybook
 verification from source.
 
-## What `yarn scaffold` Handles
+## What `pnpm scaffold` Handles
 
-`yarn scaffold` is the repo-local post-generation step. It:
+`pnpm scaffold` is the repo-local post-generation step. It:
 
 - injects owners into the generated MDX maintainer block
 - injects the problem-statement scaffold
@@ -69,14 +69,14 @@ verification from source.
 - adds the IBM copyright header to generated source files
 
 Future repo-local contribution commands should be added to the root
-`package.json` and run as `yarn <script-name>`.
+`package.json` and run as `pnpm <script-name>`.
 
 ## Prerequisites To Check
 
 Before running the contribution flow, make sure the contributor has:
 
 - Node matching the repo's `.nvmrc`
-- Yarn available through the repo's configured package manager
+- pnpm available through Corepack (`packageManager` in root `package.json`)
 - GitHub CLI installed and authenticated with `gh auth login` when using
   `--with-git`
 - SSO authorized for the `carbon-design-system` GitHub organization when using
@@ -128,14 +128,14 @@ For React components:
 
 ```bash
 cd packages/react
-yarn storybook
+pnpm storybook
 ```
 
 For web components:
 
 ```bash
 cd packages/web-components
-yarn storybook
+pnpm storybook
 ```
 
 When helping implement a component, work in this order:
@@ -143,10 +143,10 @@ When helping implement a component, work in this order:
 1. Update the generated source, styles, tests, and Storybook story.
 2. Confirm the component renders and behaves correctly in Storybook.
 3. Keep iterating until the Storybook state matches the user's request.
-4. Run `yarn prep` only when the user says the contribution is ready for PR
+4. Run `pnpm prep` only when the user says the contribution is ready for PR
    review.
 
-Do not jump straight to `yarn prep`, package builds, or distribution-output
+Do not jump straight to `pnpm prep`, package builds, or distribution-output
 checks before local Storybook confirmation. The component package `es` and `lib`
 directories are distribution artifacts, not required for Storybook development.
 
@@ -155,15 +155,15 @@ directories are distribution artifacts, not required for Storybook development.
 When the contribution is ready for PR review, run one repo-local prep command:
 
 ```bash
-yarn prep
+pnpm prep
 ```
 
 This is the required PR prep path. It:
 
 - adds the IBM copyright header to added source files
-- runs `yarn format`
-- runs `yarn dedupe`
-- runs `yarn lint:license`
+- runs `pnpm format`
+- runs `pnpm dedupe`
+- runs `pnpm lint:license`
 
 Do not ask contributors to run additional cleanup commands for normal component
 contributions unless a command fails and you are helping debug the failure.

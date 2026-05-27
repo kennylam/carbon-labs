@@ -60,17 +60,17 @@ git repository. You might have heard this setup described as a
 As a result, we use two pieces of tooling to help us managing installing
 dependencies and publishing our packages. These include:
 
-- [Yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) for handling
-  dependencies across all packages
+- [pnpm workspaces](https://pnpm.io/workspaces) for handling dependencies across
+  all packages
 - [Lerna](https://lerna.js.org/) for publishing packages, tagging versions, and
   more
 
-In order for you to install all the dependencies in this project, you'll need to
-[install Yarn](https://yarnpkg.com/en/docs/install) and run the following
-command in your terminal:
+In order for you to install all the dependencies in this project, enable
+[Corepack](https://nodejs.org/api/corepack.html) and run the following command
+in your terminal:
 
 ```bash
-yarn install
+pnpm install
 ```
 
 This will install all of the dependencies for every package in our project. In
@@ -85,7 +85,7 @@ things don't fail while you are working on a package. To do this, you can run
 the following command:
 
 ```bash
-yarn build
+pnpm build
 ```
 
 Afterwards, you should be good to go!
@@ -97,14 +97,14 @@ run:
 
 ```bash
 cd packages/web-components
-yarn storybook
+pnpm storybook
 ```
 
 or
 
 ```bash
 cd packages/react
-yarn storybook
+pnpm storybook
 ```
 
 This will start a development server where you can see any changes you are
@@ -116,13 +116,13 @@ running Storybook from the root of the project.
 
 ```bash
 cd packages/web-components
-yarn storybook
+pnpm storybook
 
 cd ../react
-yarn storybook
+pnpm storybook
 
 cd ../..
-yarn storybook
+pnpm storybook
 ```
 
 The
@@ -134,13 +134,13 @@ can be modified if needed.
 While working on Carbon Labs, here are some of the top-level tasks that you
 might want to run:
 
-| Command                            | Usage                                                                                                         |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `yarn build`                       | Runs the gulp `build` tasks and uses lerna to run the `build` script for the `@carbon-labs/utilities` package |
-| `yarn build:dist`                  | Runs the rollup `dist` config and generates the CDN artifacts                                                 |
-| `yarn format`, `yarn format:write` | Check if files have been formatted, format files using prettier                                               |
-| `yarn ci-check`                    | Runs the ci-checks                                                                                            |
-| `yarn ci-check:build`              | Runs the ci-checks along with the build and build:dist commands                                               |
+| Command                           | Usage                                                                                                         |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `pnpm build`                      | Runs the gulp `build` tasks and uses lerna to run the `build` script for the `@carbon-labs/utilities` package |
+| `pnpm build:dist`                 | Runs the rollup `dist` config and generates the CDN artifacts                                                 |
+| `pnpm format`, `pnpm format:diff` | Check if files have been formatted, format files using prettier                                               |
+| `pnpm ci-check`                   | Runs the ci-checks                                                                                            |
+| `pnpm ci-check:build`             | Runs the ci-checks along with the build and build:dist commands                                               |
 
 ## Building a React Component
 
@@ -152,7 +152,7 @@ might want to run:
 
    ```bash
    cd packages/react
-   yarn generate TestComponent
+   pnpm generate TestComponent
    ```
 
    This will generate:
@@ -165,10 +165,10 @@ might want to run:
    - The package name for the component will begin with `@carbon-labs/react-*`.
 
 2. From the root of the project, run the following to add your component to the
-   yarn workspace.
+   pnpm workspace.
 
    ```bash
-   yarn && yarn build
+   pnpm install && pnpm build
    ```
 
 3. The generated template comes with a simple snapshot test case (ie.
@@ -178,7 +178,7 @@ might want to run:
 
    ```bash
    cd package/react
-   yarn test
+   pnpm test
    ```
 
 ## Building a Web Component
@@ -191,7 +191,7 @@ might want to run:
 
    ```bash
    cd packages/web-components
-   yarn generate test-component
+   pnpm generate test-component
    ```
 
    This will generate:
@@ -205,10 +205,10 @@ might want to run:
    - The package name for the component will begin with `@carbon-labs/wc-*`.
 
 2. From the root of the project, run the following to add your component to the
-   yarn workspace.
+   pnpm workspace.
 
    ```bash
-   yarn && yarn build
+   pnpm install && pnpm build
    ```
 
 3. The generated template comes with a simple snapshot test case (ie.
@@ -218,7 +218,7 @@ might want to run:
 
    ```bash
    cd package/web-components
-   yarn test
+   pnpm test
    ```
 
 ## Document maintainers
@@ -266,7 +266,7 @@ file (within `<component-name>/__stories__/<component-name>.mdx`)
    Conventional Commits.
 
 6. Once ready for feedback from other contributors and maintainers, **push your
-   commits to your fork** (be sure to run `yarn ci-check` before pushing, to
+   commits to your fork** (be sure to run `pnpm ci-check` before pushing, to
    make sure your code passes linting and unit tests):
 
    ```

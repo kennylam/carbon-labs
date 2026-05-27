@@ -182,7 +182,7 @@ gifski -o demo-optimized.gif demo-trimmed.mov --fps 10 --width 800 --quality 80
 
 1. Save the optimized GIF as `demo.gif` in the extension root
 2. The README already references it: `![Carbon Token Snippets Demo](demo.gif)`
-3. Rebuild the extension: `yarn package`
+3. Rebuild the extension: `pnpm package`
 4. The GIF will be included in the .vsix package
 
 ## Alternative: Video
@@ -246,7 +246,7 @@ file sizes.
 Once you have the demo.gif file:
 
 1. Place it in `packages/vscode-snippets-extension/`
-2. Run `yarn package` to rebuild
+2. Run `pnpm package` to rebuild
 3. The demo will appear in the VSCode Marketplace listing
 
 **Remember: The demo is optional!** The extension works perfectly without it,

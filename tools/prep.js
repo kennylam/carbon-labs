@@ -179,9 +179,9 @@ async function main() {
   console.log(`Base ref: ${baseRef ?? 'none found'}`);
 
   await addCopyrightHeaders(repoRoot, baseRef, { dryRun: options.dryRun });
-  await run('yarn', ['format'], { cwd: repoRoot, dryRun: options.dryRun });
-  await run('yarn', ['dedupe'], { cwd: repoRoot, dryRun: options.dryRun });
-  await run('yarn', ['lint:license'], {
+  await run('pnpm', ['format'], { cwd: repoRoot, dryRun: options.dryRun });
+  await run('pnpm', ['dedupe'], { cwd: repoRoot, dryRun: options.dryRun });
+  await run('pnpm', ['lint:license'], {
     cwd: repoRoot,
     dryRun: options.dryRun,
   });

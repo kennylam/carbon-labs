@@ -39,11 +39,10 @@ the following command using [npm](https://www.npmjs.com/):
 npm install -S @carbon/react @carbon/ibm-products @carbon-labs/react-whats-new
 ```
 
-If you prefer [Yarn](https://yarnpkg.com/en/), use the following command
-instead:
+If you prefer pnpm, use the following command instead:
 
 ```bash
-yarn add @carbon/react @carbon/ibm-products @carbon-labs/react-whats-new
+pnpm add @carbon/react @carbon/ibm-products @carbon-labs/react-whats-new
 ```
 
 ## ⚡ Usage

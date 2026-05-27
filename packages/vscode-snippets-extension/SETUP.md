@@ -38,20 +38,20 @@ packages/vscode-snippets-extension/
 
 ```bash
 cd packages/vscode-snippets-extension
-yarn install
+pnpm install
 ```
 
 ### 2. Build (Copy Snippets)
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ### 3. Test Locally
 
 ```bash
 # Package the extension
-yarn package
+pnpm package
 
 # This creates: carbon-token-snippets-0.1.0.vsix
 ```
@@ -111,15 +111,15 @@ When updating snippets:
 1. Edit files in `../vscode-snippets/src/`
 2. Update version in `package.json`
 3. Update `CHANGELOG.md`
-4. Run `yarn build` to copy updated snippets
+4. Run `pnpm build` to copy updated snippets
 5. Publish new version
 
 ## Scripts
 
-- `yarn build` - Copy snippet files from npm package
-- `yarn clean` - Remove generated snippets directory
-- `yarn package` - Build and create .vsix file
-- `yarn publish` - Build and publish to Marketplace
+- `pnpm build` - Copy snippet files from npm package
+- `pnpm clean` - Remove generated snippets directory
+- `pnpm package` - Build and create .vsix file
+- `pnpm publish` - Build and publish to Marketplace
 
 ## Documentation
 

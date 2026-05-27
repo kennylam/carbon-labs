@@ -1,9 +1,9 @@
 {
   "**/*.{js,ts,tsx}": [
     "prettier --cache --write",
-    "eslint",
     "pnpm lint:license:staged"
   ],
+  "packages/**/*.{js,ts,tsx}": ["eslint"],
   "**/*.scss": [
     "prettier --cache --write",
     "stylelint --report-needless-disables --report-invalid-scope-disables --allow-empty-input",

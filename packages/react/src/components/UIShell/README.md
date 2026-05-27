@@ -16,11 +16,10 @@ the following command using [npm](https://www.npmjs.com/):
 npm install -S @carbon-labs/react-ui-shell @carbon/react
 ```
 
-If you prefer [Yarn](https://yarnpkg.com/en/), use the following command
-instead:
+If you prefer pnpm, use the following command instead:
 
 ```bash
-yarn add @carbon-labs/react-ui-shell @carbon/react
+pnpm add @carbon-labs/react-ui-shell @carbon/react
 ```
 
 ## ⚡ Usage

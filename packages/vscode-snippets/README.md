@@ -14,7 +14,7 @@ npm install @carbon-labs/vscode-snippets
 or
 
 ```bash
-yarn add @carbon-labs/vscode-snippets
+pnpm add @carbon-labs/vscode-snippets
 ```
 
 The package will automatically install snippet files to your project's `.vscode`
@@ -89,7 +89,7 @@ The package includes comprehensive tests for the installation logic:
 
 ```bash
 cd packages/vscode-snippets
-yarn test
+pnpm test
 ```
 
 Tests cover:

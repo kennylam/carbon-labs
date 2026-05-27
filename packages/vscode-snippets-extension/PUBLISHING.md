@@ -47,7 +47,7 @@ This guide covers **Option 1 (Manual Publishing)**.
 
    ```bash
    cd packages/vscode-snippets-extension
-   yarn install
+   pnpm install
    ```
 
 2. **VSCode Extension Manager (vsce)** The `@vscode/vsce` package is included as
@@ -65,10 +65,10 @@ The extension needs to copy snippet files from the npm package before packaging:
 
 ```bash
 # Build (copy snippets from ../vscode-snippets/src)
-yarn build
+pnpm build
 
 # Clean build artifacts
-yarn clean
+pnpm clean
 ```
 
 ## Local Testing
@@ -78,13 +78,13 @@ To test the extension locally before publishing:
 1. **Build the extension**
 
    ```bash
-   yarn build
+   pnpm build
    ```
 
 2. **Package the extension**
 
    ```bash
-   yarn package
+   pnpm package
    ```
 
    This creates a `.vsix` file (e.g., `carbon-token-snippets-0.1.0.vsix`)
@@ -123,7 +123,7 @@ To test the extension locally before publishing:
 
 ```bash
 # Publish to VSCode Marketplace
-yarn publish
+pnpm publish
 ```
 
 This will:
@@ -138,8 +138,8 @@ If you prefer more control:
 
 ```bash
 # Build and package
-yarn build
-yarn package
+pnpm build
+pnpm package
 
 # Publish the .vsix file manually
 npx vsce publish
@@ -171,8 +171,8 @@ editors.
 
 ```bash
 # Build the extension first
-yarn build
-yarn package
+pnpm build
+pnpm package
 
 # Publish to Open VSX
 npx ovsx publish carbon-token-snippets-0.1.0.vsix -p YOUR_ACCESS_TOKEN
@@ -194,8 +194,8 @@ To publish to both VSCode Marketplace and Open VSX:
 
 ```bash
 # Build once
-yarn build
-yarn package
+pnpm build
+pnpm package
 
 # Publish to VSCode Marketplace
 npx vsce publish
@@ -251,8 +251,8 @@ https://open-vsx.org/extension/lee-chase/carbon-token-snippets
 4. Build and publish to both marketplaces:
 
    ```bash
-   yarn build
-   yarn package
+   pnpm build
+   pnpm package
 
    # Publish to VSCode Marketplace
    npx vsce publish
@@ -275,7 +275,7 @@ https://open-vsx.org/extension/lee-chase/carbon-token-snippets
 
 ### Snippets not updating
 
-- Run `yarn clean && yarn build` to ensure fresh copy
+- Run `pnpm clean && pnpm build` to ensure fresh copy
 - Check that snippet files exist in `./snippets/` directory
 
 ## Related Documentation

@@ -27,7 +27,7 @@ if (!name) {
   console.error(
     `${chalk.red(
       'Error:'
-    )} No component name given. e.g. yarn generate test-component`
+    )} No component name given. e.g. pnpm generate test-component`
   );
   process.exit(1);
 }
@@ -61,7 +61,7 @@ sync(resolve(templatesPath, '**/*')).forEach((template) => {
   let relativePath = relative(templatesPath, template);
 
   // needed to name the template package.json file to 'package-edit.json' otherwise
-  // yarn tries to register the template as a package, so swapping back to package.json here
+  // pnpm tries to register the template as a package, so swapping back to package.json here
   if (relativePath.includes('package-edit.json')) {
     relativePath = relativePath.replace('package-edit.json', 'package.json');
   }

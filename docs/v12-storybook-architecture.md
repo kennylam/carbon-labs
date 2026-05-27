@@ -54,26 +54,26 @@ storybook-static/
 
 ```bash
 # Root
-yarn storybook
+pnpm storybook
 
 # Web Components
-yarn workspace @carbon-labs/web-components storybook
+pnpm --filter @carbon-labs/web-components storybook
 
 # React
-yarn workspace @carbon-labs/react storybook
+pnpm --filter @carbon-labs/react storybook
 ```
 
 **V12 (Internal):**
 
 ```bash
 # Root
-yarn storybook:v12
+pnpm storybook:v12
 
 # Web Components
-yarn workspace @carbon-labs/web-components storybook:v12
+pnpm --filter @carbon-labs/web-components storybook:v12
 
 # React
-yarn workspace @carbon-labs/react storybook:v12
+pnpm --filter @carbon-labs/react storybook:v12
 ```
 
 ## Build Process
@@ -81,7 +81,7 @@ yarn workspace @carbon-labs/react storybook:v12
 ### Single Command Build
 
 ```bash
-yarn storybook:build:full
+pnpm storybook:build:full
 ```
 
 This command:
@@ -106,17 +106,17 @@ This command:
 **Standard:**
 
 ```bash
-yarn storybook:build                                    # Root
-yarn workspace @carbon-labs/web-components storybook:build  # Web Components
-yarn workspace @carbon-labs/react storybook:build          # React
+pnpm storybook:build                                    # Root
+pnpm --filter @carbon-labs/web-components storybook:build  # Web Components
+pnpm --filter @carbon-labs/react storybook:build          # React
 ```
 
 **V12:**
 
 ```bash
-yarn storybook:build:v12                                    # Root
-yarn workspace @carbon-labs/web-components storybook:build:v12  # Web Components
-yarn workspace @carbon-labs/react storybook:build:v12          # React
+pnpm storybook:build:v12                                    # Root
+pnpm --filter @carbon-labs/web-components storybook:build:v12  # Web Components
+pnpm --filter @carbon-labs/react storybook:build:v12          # React
 ```
 
 ## Component Organization
@@ -195,7 +195,7 @@ The GitHub Actions workflow (`.github/workflows/storybook-publish.yml`) runs:
 
 ```yaml
 - name: Build all Storybooks
-  run: yarn storybook:build:full
+  run: pnpm storybook:build:full
 
 - name: Deploy to GitHub Pages
   # Deploys entire storybook-static/ directory

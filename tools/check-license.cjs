@@ -99,9 +99,6 @@ const check = async (paths, options) => {
   const filesWithErrors = (
     await Promise.all(
       checkFiles.map(async (item) => {
-        if (item.indexOf('.yarn') !== -1) {
-          return;
-        }
         const contents = await readFile(item, 'utf8');
         const result = (
           options.testCurrentYear || options.writeCurrentYear
