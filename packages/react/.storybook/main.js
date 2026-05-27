@@ -15,10 +15,7 @@ const includeV12 = process.env.STORYBOOK_INCLUDE_V12 === 'true';
 
 // Build stories array based on environment variable
 const storiesGlobs = includeV12
-  ? [
-      '../src/v12/**/*.mdx',
-      '../src/v12/**/*.stories.@(js|jsx|mjs|ts|tsx)',
-    ]
+  ? ['../src/v12/**/*.mdx', '../src/v12/**/*.stories.@(js|jsx|mjs|ts|tsx)']
   : [
       '../src/components/**/*.mdx',
       '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
@@ -58,15 +55,27 @@ const config = {
     options: {},
   },
   webpack(config) {
-    // Add webpack alias to resolve @carbon-labs/utilities to built files
-    config.resolve = config.resolve || {};
-    config.resolve.alias = config.resolve.alias || {};
-
-    // Map clean imports to the built es directory
-    config.resolve.alias['@carbon-labs/utilities'] = path.resolve(
+    const utilitiesRoot = path.resolve(__dirname, '../../utilities');
+    const mdxComponentsRoot = path.resolve(
       __dirname,
-      '../../utilities/es'
+      '../src/components/MDXComponents'
     );
+
+    // Resolve workspace packages for Storybook under pnpm hoisting.
+    config.resolve = config.resolve || {};
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@carbon-labs/mdx-components/components': path.join(
+        mdxComponentsRoot,
+        'components'
+      ),
+      '@carbon-labs/mdx-components': path.join(mdxComponentsRoot, 'es'),
+      '@carbon-labs/utilities/usePrefix': path.join(
+        utilitiesRoot,
+        'es/usePrefix.js'
+      ),
+      '@carbon-labs/utilities': path.join(utilitiesRoot, 'es/index.js'),
+    };
 
     config.module.rules.push({
       test: /\.s?css$/,
@@ -106,6 +115,8 @@ const config = {
               includePaths: [
                 path.resolve(__dirname, '..', 'node_modules'),
                 path.resolve(__dirname, '..', '..', '..', 'node_modules'),
+                mdxComponentsRoot,
+                utilitiesRoot,
               ],
             },
             warnRuleAsWarning: true,
