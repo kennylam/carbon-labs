@@ -16,7 +16,7 @@ import {
   OverflowMenuVertical,
 } from '@carbon/react/icons';
 import mdx from './StylePicker.mdx';
-import styles from './_storybook-styles.scss?inline';
+import './_storybook-styles.scss';
 import {
   StylePicker,
   StylePickerColor,
@@ -30,7 +30,6 @@ export default {
   component: StylePicker,
   parameters: {
     layout: 'centered',
-    styles,
     docs: {
       page: mdx,
     },
